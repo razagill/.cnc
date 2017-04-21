@@ -1,0 +1,39 @@
+is-supported() {
+  if [ $# -eq 1 ]; then
+    if eval "$1" > /dev/null 2>&1; then true; else false; fi
+  else
+    if eval "$1" > /dev/null 2>&1; then
+      echo -n "$2"
+    else
+      echo -n "$3"
+    fi
+  fi
+}
+
+# Do a Matrix movie effect of falling characters
+function matrix1() {
+	echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) ;sleep 0.05; done|gawk '{ letters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()"; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
+}
+
+function matrix2() {
+	echo -e "\e[1;40m" ; clear ; characters=$( jot -c 94 33 | tr -d '\n' ) ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) $characters ;sleep 0.05; done|gawk '{ letters=$5; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
+}
+
+# curlheader will return the header value specified for a given URL
+# usage: curlheader ${header} ${url}
+# or get all headers
+# curlheader ${url}
+function curlheader() {
+  if [[ -z "$2" ]]; then
+    echo "curl -k -s -D - $1 -o /dev/null"
+    curl -k -s -D - $1 -o /dev/null:
+  else
+    echo "curl -k -s -D - $2 -o /dev/null | grep $1:"
+    curl -k -s -D - $2 -o /dev/null | grep $1:
+  fi
+}
+
+##Get the bitrate of an audio file
+bitrate() {
+  afinfo $1 |grep "bit rate"
+}
