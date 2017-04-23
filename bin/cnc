@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+BIN_NAME=$(basename "$0")
+COMMAND_NAME=$1
+SUB_COMMAND_NAME=$2
+
+sub_help () {
+  echo "Usage: $BIN_NAME <command>"
+  echo
+  echo "Commands:"
+  echo "   help             This help message"
+  echo "   edit             Open cnc in editor ($EDITOR_ALT) and Git GUI ($GIT_GUI)"
+  echo "   reload           Reload cnc"
+  echo "   update           Update packages and pkg managers (OS, brew, npm, gem, pip)"
+  echo "   clean            Clean up caches (brew, npm, gem, rvm)"
+  echo "   macos            Apply macOS system defaults"
+}
+
+sub_edit () {
+  sh -c "$EDITOR $CNC_DIR"
+}
+
+sub_reload () {
+  . ~/.zprofile && echo "zsh reloaded."
+}
+
+sub_update () {
+  sudo softwareupdate -i -a
+  brew update
+  brew upgrade
+  brew cleanup
+  brew cask cleanup
+	brew doctor
+}
+
+sub_macos () {
+  for DEFAULTS_FILE in "${CNC_DIR}"/macos/defaults*.sh; do
+    echo "Applying ${DEFAULTS_FILE}" && . "${DEFAULTS_FILE}"
+  done
+  echo "Done. Some changes may require a logout/restart to take effect."
+}
+
+# Make sure to keep this in sync with the available public commands
+sub_completion () {
+  echo "help edit reload update clean macos"
+}
+
+case $COMMAND_NAME in
+  "" | "-h" | "--help")
+    sub_help
+    ;;
+  *)
+    shift
+    sub_${COMMAND_NAME} $@
+    if [ $? = 127 ]; then
+      echo "'$COMMAND_NAME' is not a known command or has errors." >&2
+      sub_help
+      exit 1
+    fi
+    ;;
+esac

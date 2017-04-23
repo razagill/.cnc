@@ -1,3 +1,14 @@
+#############################################################################
+#### Utility functions
+#############################################################################
+
+
+# Executable
+is-executable() {
+  local BIN=$(command -v "$1" 2>/dev/null)
+  if [[ ! $BIN == "" && -x $BIN ]]; then true; else false; fi
+}
+
 is-supported() {
   if [ $# -eq 1 ]; then
     if eval "$1" > /dev/null 2>&1; then true; else false; fi
@@ -8,6 +19,11 @@ is-supported() {
       echo -n "$3"
     fi
   fi
+}
+
+# Add to path
+prepend-path() {
+  [ -d $1 ] && PATH="$1:$PATH"
 }
 
 # Do a Matrix movie effect of falling characters
@@ -36,4 +52,18 @@ function curlheader() {
 ##Get the bitrate of an audio file
 bitrate() {
   afinfo $1 |grep "bit rate"
+}
+
+# Upload file to transfer.sh
+# https://github.com/dutchcoders/transfer.sh/
+transfer() {
+  tmpfile=$( mktemp -t transferXXX )
+  curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) >> $tmpfile;
+  cat $tmpfile;
+  rm -f $tmpfile;
+}
+
+# Get IP from hostname
+hostname2ip() {
+  ping -c 1 "$1" | egrep -m1 -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
 }
