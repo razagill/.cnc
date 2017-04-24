@@ -2,10 +2,8 @@
 #### Generic configuration
 #############################################################################
 
-CNC_DIR="~/.cnc"
-
 # Source the dotfiles (order matters)
-for DOTFILE in "$CNC_DIR"/homedir/.{function,path,vars,alias,grep,fasd,custom}; do
+for DOTFILE in ~/.cnc/homedir/.{function,path,vars,alias,alias.local,grep,fasd,custom}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 

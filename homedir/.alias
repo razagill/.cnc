@@ -1,10 +1,5 @@
 #!/bin/sh
-
-#############################################################################
-#### Connectivity
-#############################################################################
-alias ssh.dionysus='ssh osmc@192.168.178.24'
-alias ssh.ftt='ssh icarus@friendlytickletorture.com'
+source ~/.cnc/homedir/.alias.local
 
 #############################################################################
 #### Commands to change dirs
