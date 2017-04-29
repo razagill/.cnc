@@ -2,31 +2,26 @@
 source ~/.cnc/setup/setup_func.sh
 export $CNC_DIR="~/.cnc"
 
+
 bot "Setting up your Mac via Command & Control"
+# Creating home directory symlinks
+create_symlinks
 
-bot "Creating symlinks..."
-#Symlinks 
-ln -sfv ~/.cnc/system/.profile ~
-ln -sfv ~/.cnc/system/.zprofile ~
-ln -sfv ~/.cnc/system/.zshrc ~
+# Package managers & packages
+bot "Installing brew packages..."
 
+. ~/.cnc/setup/brew.sh
+. ~/.cnc/setup/brew-cask.sh
 
-for DOTFILE in ~/.cnc/homedir/.{function,path,vars,alias,grep,fasd,custom}; do
-  ln -sfv $DOTFILE ~
-done
+# Set Zsh as the default shell
+bot "Setting zsh as the default shell"
+chsh -s $(which zsh)
 
-# # Package managers & packages
-# bot "Installing brew packages..."
+bot "Setting up macOS defaults..."
+. ~/.cnc/macos/defaults.sh
 
-# . ~/.cnc/setup/brew.sh
-# . ~/.cnc/setup/brew-cask.sh
-
-
-# bot "Setting zsh as the default shell"
-# # Set Zsh as the default shell
-# chsh -s $(which zsh)
-
-# bot "Setting up macOS defaults..."
-# . ~/.cnc/macos/defaults.sh
+# Configure neovim
+setup_neovim
+bot "Please run :PlugInstall when starting neovim for the first time to install all plugins"
 
 bot "All done, please restart terminal/machine"

@@ -28,3 +28,30 @@ function require_brew() {
     fi
     ok
 }
+
+function create_symlinks() {
+	running "Creating symlinks"
+	ln -sfv ~/.cnc/system/.profile ~
+	ln -sfv ~/.cnc/system/.zprofile ~
+	ln -sfv ~/.cnc/system/.zshrc ~
+
+	for DOTFILE in ~/.cnc/homedir/.{function,path,vars,alias,grep,fasd,custom,tmux.conf};do
+		ln -sfv $DOTFILE ~
+	done
+}
+
+function set_macos_defaults() {
+	running "Setting macOS defaults"
+	. ~/.cnc/setup/setup_macos_defaults.sh
+}
+
+function setup_neovim() {
+	running "Setting up neovim"
+	#Create config directory
+	mkdir -p ~/.config/nvim/autoload
+	#Download vim-plug plugin manager
+	curl -fLo ~/.config/nvim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	#Create symlinks for neovim config files
+	ln -sfv ~/.cnc/homedir/neovim/init.vim ~/.config/nvim/init.vim
+}
+
