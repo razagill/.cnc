@@ -18,10 +18,6 @@ bot "Setting zsh as the default shell"
 chsh -s $(which zsh)
 
 bot "Setting up macOS defaults..."
-. ~/.cnc/macos/defaults.sh
-
-# Configure neovim
-setup_neovim
-bot "Please run :PlugInstall when starting neovim for the first time to install all plugins"
+set_macos_defaults
 
 bot "All done, please restart terminal/machine"

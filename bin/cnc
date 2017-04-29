@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+source ~/.cnc/setup/setup_func.sh
 
 BIN_NAME=$(basename "$0")
 COMMAND_NAME=$1
@@ -34,10 +35,7 @@ sub_update () {
 }
 
 sub_macos () {
-  for DEFAULTS_FILE in "${CNC_DIR}"/macos/defaults*.sh; do
-    echo "Applying ${DEFAULTS_FILE}" && . "${DEFAULTS_FILE}"
-  done
-  echo "Done. Some changes may require a logout/restart to take effect."
+  set_macos_defaults
 }
 
 # Make sure to keep this in sync with the available public commands
