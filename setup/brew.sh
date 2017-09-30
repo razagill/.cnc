@@ -18,7 +18,6 @@ require_brew coreutils
 require_brew git 
 require_brew tree 
 require_brew trash 
-require_brew yarn
 require_brew wget 
 require_brew nvm 
 require_brew python 
