@@ -6,7 +6,6 @@ brew tap caskroom/cask
 brew tap caskroom/versions
 
 # Install packages
-require_cask alfred
 require_cask dropbox
 require_cask firefox 
 require_cask evernote 
