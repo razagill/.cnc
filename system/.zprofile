@@ -14,6 +14,7 @@ setopt    appendhistory     #Append history to the history file (no overwriting)
 setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
 setopt    autocd 						#automatically go inside the directory on cd
+setopt		PROMPT_SUBST			#prompt string is first subjected to parameter expansion
 
 ##############################################################################
 # z-zsh setup
@@ -22,3 +23,4 @@ setopt    autocd 						#automatically go inside the directory on cd
 # function precmd () {
 #   z --add "$(pwd -P)"
 # }
+

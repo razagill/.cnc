@@ -11,10 +11,16 @@ antigen bundle command-not-found
 antigen bundle tarruda/zsh-autosuggestions
 antigen bundle ssh-agent
 
-antigen theme eendroroy/alien alien
+#antigen theme eendroroy/alien alien
 # Tell Antigen that you're done.
 antigen apply
 
+#autoload zsh vars
+autoload -U colors
+colors
+
+#change prompt after zsh is loaded
+source ~/.cnc/system/.prompt
 
 # load .nvmrc
 function chpwd() {
