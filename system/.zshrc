@@ -2,13 +2,10 @@
 source /usr/local/share/antigen/antigen.zsh
 
 source /usr/local/opt/nvm/nvm.sh
-
+export LC_ALL=en_US.UTF-8
 # Install plugings
 antigen bundle git
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
 antigen bundle command-not-found
-antigen bundle tarruda/zsh-autosuggestions
 antigen bundle ssh-agent
 
 #antigen theme eendroroy/alien alien
@@ -35,4 +32,14 @@ function chpwd() {
 unsetopt correct
 
 # Customize plugins
-bindkey '^ ' autosuggest-accept
+#bindkey '^ ' autosuggest-accept
+
+# zle config
+#bindkey -v					#set default mode to vim
+#bindkey -s "\C-r" "\eqhh --\n"
+bindkey -s "\C-r" "\eqhh --\n"
+
+#z config
+. `brew --prefix`/etc/profile.d/z.sh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

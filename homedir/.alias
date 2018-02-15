@@ -71,7 +71,7 @@ alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 
 #Start a chrome instance with security disabled (assuming chrome is installed via homebrew-cask)
-alias chrome-disable-sec="/usr/local/Caskroom/google-chrome/latest/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_session" --disable-web-security"
+alias chrome-disable-sec="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-data-dir="/tmp/chrome_dev_session" --disable-web-security"
 
 # Recursively remove Apple meta files
 alias cleanupds="find . -type f -name '*.DS_Store' -ls -exec /bin/rm {} \;"

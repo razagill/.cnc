@@ -7,6 +7,7 @@
 is-executable getconf && PATH=$(`command -v getconf` PATH)
 
 # Prepend new items to path (if directory exists)
+export ANDROID_HOME=$HOME/Library/Android/sdk
 prepend-path "/bin"
 prepend-path "/usr/bin"
 prepend-path "/usr/local/bin"

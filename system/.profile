@@ -3,7 +3,7 @@
 #############################################################################
 
 # Source the dotfiles (order matters)
-for DOTFILE in ~/.cnc/homedir/.{function,path,vars,alias,alias.local,grep,fasd,custom}; do
+for DOTFILE in ~/.cnc/homedir/.{function,path,vars,alias,alias.local,grep,custom}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 

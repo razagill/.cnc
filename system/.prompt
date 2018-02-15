@@ -2,10 +2,10 @@ function git_branch_name() {
   git branch 2>/dev/null | awk '/^\*/ { print $2 }'
 } 
 function git_is_dirty() { 
-  echo "$(git diff --quiet 2> /dev/null || echo "$fg[red]*$reset_color")"
+  echo "$(git diff --quiet 2> /dev/null || echo "%{$fg[red]%}*%{$reset_color%}")"
 }
 
 
 #Change prompt
-PROMPT='┌ $fg[yellow]%m$reset_color|$fg[cyan]%3~$reset_color|$(git_branch_name)$(git_is_dirty) ┘
-$fg[red][λ]'
+PROMPT='┌ %{$fg[cyan]%}%3~%{$reset_color%}|$(git_branch_name)$(git_is_dirty) ┘
+%{$fg[red]%}[λ]'

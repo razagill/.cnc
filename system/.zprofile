@@ -15,6 +15,7 @@ setopt    sharehistory      #Share history across terminals
 setopt    incappendhistory  #Immediately append to the history file, not just when a term is killed
 setopt    autocd 						#automatically go inside the directory on cd
 setopt		PROMPT_SUBST			#prompt string is first subjected to parameter expansion
+HH_CONFIG=keywords,hicolor  #hsrt config
 
 ##############################################################################
 # z-zsh setup
