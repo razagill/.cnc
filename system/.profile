@@ -12,3 +12,5 @@ unset DOTFILE
 
 # Export
 export CNC_DIR
+
+export PATH="$HOME/.cargo/bin:$PATH"

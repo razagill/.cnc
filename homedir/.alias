@@ -52,11 +52,13 @@ alias tree2="tree -d -L 2"
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 
 #############################################################################
-#### NPM
+#### NPM & YARN
 #############################################################################
 alias ni="npm install"
 alias nun="npm uninstall"
 alias nup="npm update"
+alias yd="yarn dev"
+alias yi="yarn install"
 
 #############################################################################
 #### Utilities

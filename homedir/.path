@@ -9,6 +9,8 @@ is-executable getconf && PATH=$(`command -v getconf` PATH)
 # Prepend new items to path (if directory exists)
 export ANDROID_HOME=$HOME/Library/Android/sdk
 prepend-path "/bin"
+prepend-path "/usr/local/opt/coreutils/libexec/gnubin"
+prepend-path "/usr/local/opt/grep/libexec/gnubin"
 prepend-path "/usr/bin"
 prepend-path "/usr/local/bin"
 is-executable brew && prepend-path "$(brew --prefix coreutils)/libexec/gnubin"
@@ -20,6 +22,9 @@ prepend-path "/usr/local/sbin"
 prepend-path "$HOME/.rvm/bin"
 prepend-path "$HOME/Library/Android/sdk/platform-tools"
 prepend-path "$HOME/Library/Android/sdk/build-tools"
+prepend-path "$HOME/flutter/bin"
+prepend-path "$HOME/.cargo/bin"
+prepend-path "$HOME/.emacs.d/bin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755

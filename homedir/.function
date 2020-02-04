@@ -67,3 +67,12 @@ transfer() {
 hostname2ip() {
   ping -c 1 "$1" | egrep -m1 -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'
 }
+
+killport() {
+	lsof -ti tcp:$1 | xargs kill
+}
+
+# Kill all spring processes (for ruby and rails sanity)
+kill_spring() {
+	ps aux | grep spring | grep -v 'grep' | awk '{print $2}' | xargs kill
+}

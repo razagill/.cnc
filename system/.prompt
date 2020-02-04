@@ -7,5 +7,6 @@ function git_is_dirty() {
 
 
 #Change prompt
-PROMPT='┌ %{$fg[cyan]%}%3~%{$reset_color%}|$(git_branch_name)$(git_is_dirty) ┘
-%{$fg[red]%}[λ]'
+#PROMPT='┌ %{$fg[cyan]%}%3~%{$reset_color%}|$(git_branch_name)$(git_is_dirty) ┘
+#%{$fg[red]%}[λ]'
+PROMPT='%{$fg[red]%}[无]'

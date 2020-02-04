@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+require File.expand_path('../../macos.rb', __FILE__) rescue LoadError
+
+# cnc update => upgrade packages
+# cnc install => idempotent installl (packages, plugins, setup my os defaults etc)
+# cnc reload => reloads my shell configuration files
+execute_macos_defaults
+
+
