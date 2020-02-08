@@ -1,0 +1,22 @@
+source $CNC_HOME/bin/echo_helper.sh
+
+# install zinit if not installed
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+  running "Installing zinit plugin manager"
+  command mkdir -p $HOME/.zinit
+  command git clone https://github.com/zdharma/zinit $HOME/.zinit/bin && \
+    ok "Installation successful" || \
+    err "zinit installation has failed (could not clone repo)"
+fi
+
+# source the zinit initialization file
+source $HOME/.zinit/bin/zinit.zsh
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# load plugins
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+#zinit light geometry-zsh/geometry

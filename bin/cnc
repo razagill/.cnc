@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 source ~/.cnc/setup/setup_func.sh
+source ~/.cnc/bin/echo_helper.sh
 
 BIN_NAME=$(basename "$0")
 COMMAND_NAME=$1
 SUB_COMMAND_NAME=$2
 
 sub_help () {
+  info "asdf"
+  err "sdffeeff"
+  running "sdffdff"j
   echo "Usage: $BIN_NAME <command>"
   echo
   echo "Commands:"

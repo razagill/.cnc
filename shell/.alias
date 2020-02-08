@@ -1,0 +1,31 @@
+#### directory listings
+#######################
+
+alias l="ls -lahAG"
+alias ll="ls -lAG"
+alias lt="ls -lahtrAG"
+
+alias ..="cd .."
+
+alias tree="tree -A"
+
+alias cpwd="pwd|tr -d '\n'|pbcopy"
+
+#### node/npm/yarn
+##################
+
+alias ni="npm install"
+alias yd="yarn dev"
+
+
+#### general utilities
+######################
+
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
+
+# recursiely remove Apple meta files
+alias cleanupds="find . -type f -name '*.DS_Store' -ls -exec /bin/rm {} \;"
+
+# quick-Look preview files from the command line
+alias ql="qlmanage -p &>/dev/null"
