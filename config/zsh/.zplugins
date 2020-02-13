@@ -19,4 +19,4 @@ zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 zinit ice depth=1; zinit light romkatv/powerlevel10k
-#zinit light geometry-zsh/geometry
+zinit light andrewferrier/fzf-z

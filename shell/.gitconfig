@@ -1,0 +1,26 @@
+[core]
+	excludesfile = /Users/razagill/.gitignore_global
+[difftool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[user]
+	name = Raza Gill
+	email = raza.gill@outlook.com
+[commit]
+	template = /Users/razagill/.stCommitMsg
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[push]
+	default = simple
+[http "https://git.51.15.81.98.xip.io"]
+	sslCAInfo = /Users/razagill/.flynn/ca-certs/default.pem
+[credential "https://git.51.15.81.98.xip.io"]
+	helper = /usr/local/bin/flynn git-credentials
+[alias]
+	ll = log --graph --format=\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"

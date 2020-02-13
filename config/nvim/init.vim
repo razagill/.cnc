@@ -27,7 +27,6 @@ autocmd FileType markdown setlocal wrap
 
 " disable mouse support
 set mouse=r								
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 " Space above/beside cursor from screen edges
 set scrolloff=1								
@@ -58,8 +57,12 @@ nnoremap <Down> :resize +1<CR>
 
 " key rebinds
 inoremap jk <ESC>
-nnoremap <silent> <leader><leader>f :FZF<cr>
+nmap <leader><leader>f :Files<cr>
+"nmap <leader><leader>b :Buffers<cr>
+"nmap <leader><leader>h :History<cr>
+"nmap <leader><leader>l :BLines<cr>
+
 " exit terminal insert mode
-tnoremap et <C-\><C-n>
+"tnoremap et <C-\><C-n>
 
 
