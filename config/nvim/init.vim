@@ -24,6 +24,7 @@ set laststatus=2
 syntax on
 syntax enable
 autocmd FileType markdown setlocal wrap					
+colorscheme gotham
 
 " disable mouse support
 set mouse=r								
@@ -58,9 +59,10 @@ nnoremap <Down> :resize +1<CR>
 " key rebinds
 inoremap jk <ESC>
 nmap <leader><leader>f :Files<cr>
-"nmap <leader><leader>b :Buffers<cr>
+nmap <leader><leader>b :Buffers<cr>
 "nmap <leader><leader>h :History<cr>
 "nmap <leader><leader>l :BLines<cr>
+
 
 " exit terminal insert mode
 "tnoremap et <C-\><C-n>

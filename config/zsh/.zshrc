@@ -1,9 +1,8 @@
 autoload -U ${fpath[1]}/*(:t)
 
 source $CNC_HOME/shell/.alias
-
+source $CNC_HOME/config/zsh/.zpath
 source $CNC_HOME/config/zsh/.zplugins
-
 source $CNC_HOME/config/zsh/.zprompt
 
 

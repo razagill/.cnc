@@ -1,7 +1,7 @@
 local pid_col
 if [[ $OS = Linux ]]; then
   pid_col=2
-elif [[ $OS = Darwin ]]; then
+elif [[ $OS = OSX ]]; then
   pid_col=3;
 else
   echo 'Error: unknown platform'

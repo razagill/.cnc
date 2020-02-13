@@ -7,9 +7,6 @@ COMMAND_NAME=$1
 SUB_COMMAND_NAME=$2
 
 sub_help () {
-  info "asdf"
-  err "sdffeeff"
-  running "sdffdff"j
   echo "Usage: $BIN_NAME <command>"
   echo
   echo "Commands:"
@@ -22,11 +19,12 @@ sub_help () {
 }
 
 sub_edit () {
-  sh -c "$EDITOR $CNC_DIR"
+  cd $CNC_HOME
+  $EDITOR
 }
 
 sub_reload () {
-  . ~/.zprofile && echo "zsh reloaded."
+  source ~/.config/zsh/.zshrc
 }
 
 sub_update () {
