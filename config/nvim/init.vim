@@ -21,11 +21,15 @@ set noautoindent
 set nocindent
 set lazyredraw
 set laststatus=2
+set noshowmode
+set termguicolors
+
+colorscheme iceberg
 syntax on
 syntax enable
 autocmd FileType markdown setlocal wrap					
-colorscheme gotham
 hi Search ctermbg=DarkCyan
+filetype plugin on
 
 " disable mouse support
 set mouse=r								
@@ -61,11 +65,31 @@ nnoremap <Down> :resize +1<CR>
 inoremap jk <ESC>
 nmap <leader><leader>f :Files<cr>
 nmap <leader><leader>b :Buffers<cr>
-"nmap <leader><leader>h :History<cr>
-"nmap <leader><leader>l :BLines<cr>
+nmap <leader><leader>l :BLines<cr>
 
+" coc keymapings
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" exit terminal insert mode
-"tnoremap et <C-\><C-n>
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
+" lightline settings
+let g:lightline = {
+  \ 'colorscheme': 'iceberg',
+  \ 'active': {
+  \   'right': [ [ 'lineinfo' ],
+  \              [ 'fileformat', 'fileencoding', 'filetype', 'gitbranch' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'FugitiveHead'
+  \ },
+  \ }
 
+" nerdcommenter settings
+let g:NERDCompactSexyComs = 1
