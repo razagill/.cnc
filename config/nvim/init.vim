@@ -25,6 +25,7 @@ syntax on
 syntax enable
 autocmd FileType markdown setlocal wrap					
 colorscheme gotham
+hi Search ctermbg=DarkCyan
 
 " disable mouse support
 set mouse=r								
