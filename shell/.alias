@@ -38,3 +38,4 @@ alias ql="qlmanage -p &>/dev/null"
 
 alias vi="nvim"
 
+alias cat="bat"
