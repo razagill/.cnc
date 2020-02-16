@@ -1,4 +1,4 @@
-source $CNC_HOME/bin/echo_helper.sh
+source $CNC_HOME/setup/echo_helper.sh
 
 # install zinit if not installed
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then

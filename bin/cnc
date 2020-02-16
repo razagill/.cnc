@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 source ~/.cnc/setup/setup_func.sh
-source ~/.cnc/bin/echo_helper.sh
+source ~/.cnc/setup/echo_helper.sh
 
 BIN_NAME=$(basename "$0")
 COMMAND_NAME=$1
