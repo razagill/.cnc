@@ -1,0 +1,40 @@
+#### OSX
+########
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+#### Thumbnails
+###############
+
+._*
+
+#### Files on external disks
+############################
+
+.Spotlight-V100
+.Trashes
+
+#### Security
+#############
+
+id_rsa
+*.local
+
+#### Tools
+##########
+
+.vagrat/
+*.log
+
+#### Vim
+########
+*.un~
+Session.vim
+.netrwhist
+
+#### Node
+#########
+node_modules
+build/Release

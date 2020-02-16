@@ -1,3 +1,6 @@
+#!/bin/sh
+source $CNC_HOME/shell/.alias.local 2> /dev/null
+
 #### directory listings
 #######################
 

@@ -17,3 +17,6 @@ fpath=(
 )
 
 typeset -U fpath
+
+# keep the path unique
+typeset -aU path 
