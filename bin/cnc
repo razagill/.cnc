@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 source ~/.cnc/setup/echo_helper.sh
 
 BIN_NAME=$(basename "$0")
@@ -23,7 +23,7 @@ sub_edit () {
 }
 
 sub_reload () {
-  source ~/.config/zsh/.zshrc
+  source $HOME/.config/zsh/.zshrc
 }
 
 sub_update () {

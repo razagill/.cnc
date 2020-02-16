@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 source $CNC_HOME/shell/.alias.local 2> /dev/null
 
 #### directory listings
