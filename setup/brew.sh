@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-# Check for Homebrew and install if we don't have it
+#!/bin/bash
 source $CNC_HOME/setup/echo_helper.sh
 
 if test ! $(which brew); then
