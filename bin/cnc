@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-source ~/.cnc/setup/setup_func.sh
 source ~/.cnc/setup/echo_helper.sh
 
 BIN_NAME=$(basename "$0")
@@ -28,11 +27,9 @@ sub_reload () {
 }
 
 sub_update () {
-  sudo softwareupdate -i -a
-  brew update
-  brew upgrade
-  brew cleanup
-	brew doctor
+  running "Updating packages"
+  . ~/.cnc/setup/brew.sh
+#  sudo softwareupdate -i -a
 }
 
 sub_macos () {

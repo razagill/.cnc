@@ -7,4 +7,4 @@ if test ! $(which brew); then
   exit 1
 fi
 
-brew bundle -file=$CNC_HOME/setup/Brewfile --no-lock
+brew bundle --file=$CNC_HOME/setup/Brewfile --no-lock -v
