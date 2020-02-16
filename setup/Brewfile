@@ -1,3 +1,4 @@
+brew "mas"
 brew "asdf"
 brew "zsh"
 brew "bat"
@@ -10,7 +11,7 @@ brew "youtube-dl"
 brew "fd"
 brew "exa"
 brew "ffmpeg"
-brew "mas"
+brew "highlight"
 
 cask "android-file-transfer"
 cask "android-platform-tools"
@@ -28,6 +29,14 @@ cask "transmission"
 cask "vlc"
 cask "rekordbox"
 cask "the-unarchiver"
+cask "qlcolorcode"
+cask "qlmarkdown"
+cask "qlstephen"
+cask "betterzip"
+cask "qlimagesize"
+
+cask "font-source-code-pro"
+cask "font-victor-mono"
 
 mas "Spark", id: 1176895641
 mas "Kindle", id: 405399194
