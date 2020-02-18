@@ -1,6 +1,6 @@
 source ~/.cnc/config/nvim/plugins.vim
 
-"""""""" GENERAL
+"""""""" general
 """"""""""""""""
 let mapleader="\<SPACE>"
 
@@ -24,11 +24,11 @@ set laststatus=2
 set noshowmode
 set termguicolors
 
-colorscheme iceberg
+colorscheme moonfly 
+
 syntax on
 syntax enable
 autocmd FileType markdown setlocal wrap					
-hi Search ctermbg=DarkCyan
 filetype plugin on
 
 " disable mouse support
@@ -67,31 +67,15 @@ nmap <leader><leader>f :Files<cr>
 nmap <leader><leader>b :Buffers<cr>
 nmap <leader><leader>l :BLines<cr>
 
-" coc keymapings
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-
-" lightline settings
+" lightline
 let g:lightline = {
-  \ 'colorscheme': 'iceberg',
+  \ 'colorscheme': 'moonfly',
   \ 'active': {
   \   'right': [ [ 'lineinfo' ],
   \              [ 'fileformat', 'fileencoding', 'filetype', 'gitbranch' ] ]
@@ -103,3 +87,72 @@ let g:lightline = {
 
 " nerdcommenter settings
 let g:NERDCompactSexyComs = 1
+
+" moonfly theme
+let g:moonflyCursorColor = 1
+
+" vim-sneak
+let g:sneak#label = 1
+
+" denite
+
+call denite#custom#option('default', { 'prompt': '❯' })
+call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--smart-case'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#option('_', 'max_dynamic_update_candidates', 100000)
+call denite#custom#option('_', { 'highlight_matched_char': 'Underlined' })
+call denite#custom#option('_', { 'auto_resize': 1 })
+
+autocmd FileType denite call s:denite_settings()
+
+function! s:denite_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+        \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> <C-v>
+        \ denite#do_map('do_action', 'vsplit')
+  nnoremap <silent><buffer><expr> d
+        \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+        \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> <Esc>
+        \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> q
+        \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+        \ denite#do_map('open_filter_buffer')
+endfunction
+
+autocmd FileType denite-filter call s:denite_filter_settings()
+
+function! s:denite_filter_settings() abort
+  nmap <silent><buffer> <Esc> <Plug>(denite_filter_quit)
+endfunction
+
+nmap <leader><leader>p :Denite -start-filter file/rec<CR>
+nmap <leader><leader>b :Denite buffer<CR>
+nnoremap <leader>g :<C-u>Denite -start-filter grep:::!<CR>
+nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
+
+" coc
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+nmap <silent> <leader>dd <Plug>(coc-definition)
+nmap <silent> <leader>dr <Plug>(coc-references)
+nmap <silent> <leader>dj <Plug>(coc-implementation)
