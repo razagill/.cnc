@@ -1,158 +1,30 @@
-source ~/.cnc/config/nvim/plugins.vim
+call plug#begin('~/.local/share/nvim/plugged')
 
-"""""""" general
-""""""""""""""""
-let mapleader="\<SPACE>"
+" general
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'itchyny/lightline.vim'
+Plug 'ruanyl/vim-gh-line'
+Plug 'preservim/nerdtree'
+Plug 'vimwiki/vimwiki'
 
-set encoding=utf8 							
-set nomodeline								
-set nowrap								
-set undolevels=100							
-set clipboard=unnamed							
-set conceallevel=1							
-set noerrorbells				
-set number relativenumber							
-set hlsearch								
-set backspace=indent,eol,start      					
-set showcmd								
-set nocompatible
-set cursorline
-set noautoindent
-set nocindent
-set lazyredraw
-set laststatus=2
-set noshowmode
-set termguicolors
+" editing
+Plug 'airblade/vim-gitgutter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/nerdcommenter'
+Plug 'justinmk/vim-sneak'
 
-colorscheme moonfly 
+" typescript
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
 
-syntax on
-syntax enable
-autocmd FileType markdown setlocal wrap					
-filetype plugin on
+" themes
+Plug 'srcery-colors/srcery-vim'
 
-" disable mouse support
-set mouse=r								
+call plug#end()
 
-" Space above/beside cursor from screen edges
-set scrolloff=1								
-set sidescrolloff=5
 
-" set tab width and convert tab to spaces
-set tabstop=2	
-set softtabstop=2
-set shiftwidth=2
-set expandtab
-set smarttab
+source $CNC_HOME/config/nvim/general.vim
+source $CNC_HOME/config/nvim/plugins.vim
 
-" set relative line numbers only when in normal focused mode
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END
-
-" automatically enter insert mode when a terminal buffer is selected
-:au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-
-" set arrow keys to resize panes
-nnoremap <Left> :vertical resize -1<CR>
-nnoremap <Right> :vertical resize +1<CR>
-nnoremap <Up> :resize -1<CR>
-nnoremap <Down> :resize +1<CR>
-
-" key rebinds
-inoremap jk <ESC>
-nmap <leader><leader>f :Files<cr>
-nmap <leader><leader>b :Buffers<cr>
-nmap <leader><leader>l :BLines<cr>
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" lightline
-let g:lightline = {
-  \ 'colorscheme': 'moonfly',
-  \ 'active': {
-  \   'right': [ [ 'lineinfo' ],
-  \              [ 'fileformat', 'fileencoding', 'filetype', 'gitbranch' ] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead'
-  \ },
-  \ }
-
-" nerdcommenter settings
-let g:NERDCompactSexyComs = 1
-
-" moonfly theme
-let g:moonflyCursorColor = 1
-
-" vim-sneak
-let g:sneak#label = 1
-
-" denite
-
-call denite#custom#option('default', { 'prompt': '❯' })
-call denite#custom#var('file/rec', 'command', ['rg', '--files', '--hidden', '--glob', '!.git'])
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--smart-case'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-call denite#custom#option('_', 'max_dynamic_update_candidates', 100000)
-call denite#custom#option('_', { 'highlight_matched_char': 'Underlined' })
-call denite#custom#option('_', { 'auto_resize': 1 })
-
-autocmd FileType denite call s:denite_settings()
-
-function! s:denite_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-        \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> <C-v>
-        \ denite#do_map('do_action', 'vsplit')
-  nnoremap <silent><buffer><expr> d
-        \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-        \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> <Esc>
-        \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> q
-        \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-        \ denite#do_map('open_filter_buffer')
-endfunction
-
-autocmd FileType denite-filter call s:denite_filter_settings()
-
-function! s:denite_filter_settings() abort
-  nmap <silent><buffer> <Esc> <Plug>(denite_filter_quit)
-endfunction
-
-nmap <leader><leader>p :Denite -start-filter file/rec<CR>
-nmap <leader><leader>b :Denite buffer<CR>
-nnoremap <leader>g :<C-u>Denite -start-filter grep:::!<CR>
-nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
-
-" coc
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <c-space> coc#refresh()
-
-nmap <silent> <leader>dd <Plug>(coc-definition)
-nmap <silent> <leader>dr <Plug>(coc-references)
-nmap <silent> <leader>dj <Plug>(coc-implementation)
+colorscheme srcery

@@ -12,6 +12,7 @@ brew "fd"
 brew "exa"
 brew "ffmpeg"
 brew "highlight"
+brew "git-delta"
 
 cask "android-file-transfer"
 cask "android-platform-tools"
