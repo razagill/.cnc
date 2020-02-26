@@ -51,3 +51,18 @@ inoremap jk <ESC>
 
 " automatically enter insert mode when a terminal buffer is selected
 :au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+
+" exit from terminal mode
+tnoremap jk <C-\><C-n> 
+
+" keep terminal in buffer list
+augroup custom_term
+    autocmd!
+    autocmd TermOpen * setlocal bufhidden=hide
+augroup END
+
+" move between buffers more easily
+nnoremap <leader>wl <c-w>l
+nnoremap <leader>wh <c-w>h
+nnoremap <leader>wk <c-w>k
+nnoremap <leader>wj <c-w>j
