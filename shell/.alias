@@ -44,3 +44,5 @@ alias vi="nvim"
 alias cat="bat"
 
 alias change_theme="kitty_change_theme"
+
+alias ytd="download_track_audio"
