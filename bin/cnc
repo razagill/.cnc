@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 source ~/.cnc/setup/echo_helper.sh
 
 BIN_NAME=$(basename "$0")
@@ -29,11 +29,10 @@ sub_reload () {
 sub_update () {
   running "Updating packages"
   . ~/.cnc/setup/brew.sh
-#  sudo softwareupdate -i -a
 }
 
 sub_macos () {
-  set_macos_defaults
+  . ~/.cnc/setup/macos_defaults.sh
 }
 
 # Make sure to keep this in sync with the available public commands

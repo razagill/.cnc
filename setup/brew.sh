@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 source $CNC_HOME/setup/echo_helper.sh
 
 if test ! $(which brew); then

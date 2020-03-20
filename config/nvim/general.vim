@@ -19,6 +19,7 @@ set lazyredraw
 set laststatus=2
 set noshowmode
 set termguicolors
+set splitright
 
 
 syntax on
