@@ -1,12 +1,13 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 " general
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/lightline.vim'
 Plug 'ruanyl/vim-gh-line'
 Plug 'preservim/nerdtree'
 Plug 'vimwiki/vimwiki'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 
 " editing
 Plug 'airblade/vim-gitgutter'

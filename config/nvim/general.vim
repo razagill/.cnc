@@ -20,6 +20,7 @@ set laststatus=2
 set noshowmode
 set termguicolors
 set splitright
+set smartcase
 
 
 syntax on
@@ -67,3 +68,10 @@ nnoremap <leader>wl <c-w>l
 nnoremap <leader>wh <c-w>h
 nnoremap <leader>wk <c-w>k
 nnoremap <leader>wj <c-w>j
+
+" move between tabs more easily
+nnoremap <leader>th :tabprev<CR>
+nnoremap <leader>tl :tabnext<CR>
+
+" removes search highlight
+nnoremap <CR> :noh
