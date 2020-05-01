@@ -75,3 +75,9 @@ nnoremap <leader>tl :tabnext<CR>
 
 " removes search highlight
 nnoremap <CR> :noh
+
+" indent with tab
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
+vnoremap <Tab> >
+vnoremap <S-Tab> <

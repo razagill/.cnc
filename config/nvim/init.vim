@@ -8,12 +8,14 @@ Plug 'preservim/nerdtree'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
 
 " editing
 Plug 'airblade/vim-gitgutter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
 Plug 'justinmk/vim-sneak'
+Plug 'elixir-editors/vim-elixir'
 
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'
