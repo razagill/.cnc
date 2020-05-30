@@ -5,10 +5,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'itchyny/lightline.vim'
 Plug 'ruanyl/vim-gh-line'
 Plug 'preservim/nerdtree'
-Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'andymass/vim-matchup'
 
 " editing
 Plug 'airblade/vim-gitgutter'
@@ -16,6 +16,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdcommenter'
 Plug 'justinmk/vim-sneak'
 Plug 'elixir-editors/vim-elixir'
+Plug 'sheerun/vim-polyglot'
 
 " typescript
 Plug 'HerringtonDarkholme/yats.vim'

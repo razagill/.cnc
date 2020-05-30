@@ -114,7 +114,6 @@ function! LightlineFilename()
 endfunction
 
 " ======== srcery
-" ===============
 let g:srcery_transparent_background = 1
 
 " ======== vimwiki
