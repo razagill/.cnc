@@ -114,11 +114,5 @@ function! LightlineFilename()
 endfunction
 
 " ======== srcery
+" ===============
 let g:srcery_transparent_background = 1
-
-" ======== vimwiki
-" ================
-let g:vimwiki_list = [{'path': '~/Dropbox/wiki/', 'syntax': 'markdown', 'ext': '.md'}]
-:map <leader>tt <Plug>VimwikiToggleListItem
-:map <leader>tr <Plug>VimwikiRemoveSingleCB
-
