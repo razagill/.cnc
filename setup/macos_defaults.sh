@@ -1,5 +1,5 @@
 #!/bin/zsh
-source ~/.cnc/setup/echo_helper.sh
+source $CNC_HOME/setup/echo_helper.sh
 
 running "change default location of screenshots to $HOME/screenshots"
 defaults write com.apple.screencapture location $HOME/screenshots

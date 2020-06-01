@@ -24,7 +24,7 @@ function! s:make_note_link(l)
 endfunction
 
 " mnemonic link zettel
-inoremap <expr> <c-l>z fzf#vim#complete({
+inoremap <expr> <leader>nl fzf#vim#complete({
   \ 'source':  'rg --no-heading --smart-case  .',
   \ 'reducer': function('<sid>make_note_link'),
   \ 'options': '--multi --reverse --margin 15%,0',

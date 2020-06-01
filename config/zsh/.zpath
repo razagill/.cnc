@@ -1,4 +1,5 @@
 path+=("$CNC_HOME/bin")
 path+=("/usr/local/sbin")
+path+=("/usr/local/smlnj/bin")
 
 export PATH

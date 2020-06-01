@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
 #### Some echo helpers to use for info/warning/error etc
 
