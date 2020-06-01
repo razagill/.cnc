@@ -30,5 +30,6 @@ call plug#end()
 
 source $CNC_HOME/config/nvim/general.vim
 source $CNC_HOME/config/nvim/plugins.vim
+source $CNC_HOME/config/nvim/zettel.vim
 
 colorscheme srcery
